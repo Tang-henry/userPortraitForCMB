@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<settings>
+	        <setting name="logPrefix" value="doTdao."/>
+	</settings>
+	
+	
+	<typeAliases>
+		<typeAlias alias="CustomerAccountEverydayTags" type="com.fid.model.business.userLaber.CustomerAccountEverydayTags" />
+		<typeAlias alias="CustomerAccountInfo" type="com.fid.model.business.userLaber.CustomerAccountInfo" />
+		<typeAlias alias="CustomerAccountTransLog" type="com.fid.model.business.userLaber.CustomerAccountTransLog" />
+		<typeAlias alias="CustomerBusinessTransLog" type="com.fid.model.business.userLaber.CustomerBusinessTransLog" />
+		<typeAlias alias="CustomerHabitEverydayTags" type="com.fid.model.business.userLaber.CustomerHabitEverydayTags" />
+		<typeAlias alias="CustomerAccountInfoH" type="com.fid.model.business.userLaber.CustomerAccountInfoH" />
+	
+	</typeAliases>
+	<typeHandlers>
+	
+		<!-- <typeHandler handler="com.fid.mybatis.typehander.TimeStampTypeHandler" javaType="java.lang.Long"/> -->
+	
+	</typeHandlers>
+	
+	
+	
+	
+</configuration>

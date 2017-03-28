@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fid.mapper.business.userLaber.EveryDayHaveStockMapper">
+
+	<resultMap id="BaseResultMap" type="com.fid.model.business.userLaber.EveryDayHaveStock">
+		<id column="id" property="id" />
+		<result column="user_id" property="userId" />
+		<result column="stock_code" property="stockCode" />
+		<result column="create_time" property="createTime" typeHandler="com.fid.mybatis.typehander.TimeStampTypeHandler"/>
+		<result column="update_time" property="updateTime" typeHandler="com.fid.mybatis.typehander.TimeStampTypeHandler"/>
+		<result column="have_time" property="haveTime" typeHandler="com.fid.mybatis.typehander.TimeStampTypeHandler"/>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, user_id, stock_code, have_time, create_time, update_time
+	</sql>
+	
+</mapper>

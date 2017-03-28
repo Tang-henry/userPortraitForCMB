@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fid.mapper.business.userLaber.CustomerAccountTransLogMapper" >
+  <resultMap id="BaseResultMap" type="CustomerAccountTransLog" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cust_no" property="custNo" jdbcType="VARCHAR" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="fund_acc_no" property="fundAccNo" jdbcType="VARCHAR" />
+    <result column="trans_amt" property="transAmt" jdbcType="DECIMAL" />
+    <result column="sec_type" property="secType" jdbcType="VARCHAR" />
+    <result column="sec_code" property="secCode" jdbcType="VARCHAR" />
+    <result column="sec_short_name" property="secShortName" jdbcType="VARCHAR" />
+    <result column="business_code" property="businessCode" jdbcType="VARCHAR" />
+    <result column="trans_date" property="transDate" jdbcType="TIMESTAMP" />
+    <result column="trans_time" property="transTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cust_no, cust_name, fund_acc_no, trans_amt, sec_type, sec_code, sec_short_name, 
+    business_code, trans_date, trans_time, create_time
+  </sql>
+  
+  
+  
+  <select id="getByCondition" resultMap="BaseResultMap" parameterType="map">
+  
+    select 
+    <include refid="Base_Column_List" />
+    from customer_account_trans_log
+    where 1=1
+    <if test="beginTransTime != null">
+		AND trans_time &gt;
+			FROM_UNIXTIME(left(#{beginTransTime},10),'%Y-%m-%d %H:%i:%S')
+    </if>
+    <if test="endTransTime != null">
+        AND trans_time &lt;
+			FROM_UNIXTIME(left(#{endTransTime},10),'%Y-%m-%d %H:%i:%S')
+    </if>
+    <if test="custNo != null">
+       and cust_no = #{custNo}
+    </if> 
+  </select>
+  
+</mapper>

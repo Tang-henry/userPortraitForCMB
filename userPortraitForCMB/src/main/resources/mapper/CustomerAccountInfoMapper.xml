@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fid.mapper.business.userLaber.CustomerAccountInfoMapper" >
+  <resultMap id="BaseResultMap" type="CustomerAccountInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cust_no" property="custNo" jdbcType="VARCHAR" />
+    <result column="cust_name" property="custName" jdbcType="VARCHAR" />
+    <result column="securities_fund" property="securitiesFund" jdbcType="VARCHAR" />
+    <result column="total_fund" property="totalFund" jdbcType="VARCHAR" />
+    <result column="busi_code_tags" property="busiCodeTags" jdbcType="VARCHAR" />
+    <result column="daily_profit_and_loss" property="dailyProfitAndLoss" jdbcType="DECIMAL" />
+    <result column="trans_date" property="transDate" jdbcType="TIMESTAMP" />
+    <result column="trans_time" property="transTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cust_no, cust_name, securities_fund, total_fund, busi_code_tags, daily_profit_and_loss, trans_date, 
+    trans_time, create_time, update_time
+  </sql>
+  
+  
+  <select id="getAll" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List" /> from customer_account_info
+  </select>
+	
+  <select id="getOneByCustNo" resultMap="BaseResultMap" parameterType="map">
+		select <include refid="Base_Column_List"/> from customer_account_info
+		<where>
+		     cust_no = #{custNo}
+		</where>
+  </select>
+</mapper>

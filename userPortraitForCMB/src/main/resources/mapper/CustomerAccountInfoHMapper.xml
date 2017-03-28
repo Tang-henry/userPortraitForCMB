@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="andy.dao.CustomerAccountInfoHMapper" >
+  <resultMap id="BaseResultMap" type="CustomerAccountInfoH" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cust_no" property="custNo" jdbcType="VARCHAR" />
+    <result column="securities_fund" property="securitiesFund" jdbcType="VARCHAR" />
+    <result column="total_fund" property="totalFund" jdbcType="VARCHAR" />
+    <result column="busi_code_tags" property="busiCodeTags" jdbcType="VARCHAR" />
+    <result column="daily_profit_and_loss" property="dailyProfitAndLoss" jdbcType="DECIMAL" />
+    <result column="trans_time" property="transTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cust_no, securities_fund, total_fund,busi_code_tags, daily_profit_and_loss, trans_time
+  </sql>
+  
+</mapper>

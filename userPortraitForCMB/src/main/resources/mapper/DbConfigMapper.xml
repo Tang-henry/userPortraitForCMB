@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- ~ The MIT License (MIT) ~ ~ Copyright (c) 2014 abel533@gmail.com ~ ~ 
+	Permission is hereby granted, free of charge, to any person obtaining a copy 
+	~ of this software and associated documentation files (the "Software"), to 
+	deal ~ in the Software without restriction, including without limitation 
+	the rights ~ to use, copy, modify, merge, publish, distribute, sublicense, 
+	and/or sell ~ copies of the Software, and to permit persons to whom the Software 
+	is ~ furnished to do so, subject to the following conditions: ~ ~ The above 
+	copyright notice and this permission notice shall be included in ~ all copies 
+	or substantial portions of the Software. ~ ~ THE SOFTWARE IS PROVIDED "AS 
+	IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR ~ IMPLIED, INCLUDING BUT NOT 
+	LIMITED TO THE WARRANTIES OF MERCHANTABILITY, ~ FITNESS FOR A PARTICULAR 
+	PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE ~ AUTHORS OR COPYRIGHT 
+	HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER ~ LIABILITY, WHETHER IN 
+	AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, ~ OUT OF OR IN CONNECTION 
+	WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN ~ THE SOFTWARE. -->
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fid.mapper.common.DbConfigMapper">
+
+	<!-- generator 自动生成	start -->
+	<resultMap id="BaseResultMap" type="com.fid.model.common.DbConfig">
+		<!-- WARNING - @mbggenerated -->
+		<id column="id" property="id" />
+		<result column="db_key" property="dbKey" />
+		<result column="db_value" property="dbValue" />
+		<result column="remark" property="remark" />
+		<result column="create_time" property="createTime" typeHandler="com.fid.mybatis.typehander.TimeStampTypeHandler"/>
+		<result column="update_time" property="updateTime" typeHandler="com.fid.mybatis.typehander.TimeStampTypeHandler"/>
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		id, db_key, db_value, remark, const_name, create_time, update_time
+	</sql>
+	
+	<select id="queryAll" resultMap="BaseResultMap">
+		select * from db_config
+	</select>
+	
+	<select id="queryConfigMap" resultMap="BaseResultMap" parameterType="map">
+		select <include refid="Base_Column_List"/> from db_config
+		<where>
+			db_key in 
+			<foreach collection="queryParamList" open="(" close=")" item="paramString" separator=",">
+					#{paramString}
+			</foreach> 
+		</where>
+	</select>
+</mapper>
